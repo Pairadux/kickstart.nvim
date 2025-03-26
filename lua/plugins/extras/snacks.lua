@@ -15,13 +15,11 @@ return {
         scroll = { enabled = false },
         statuscolumn = { enabled = false },
         words = { enabled = true },
+        terminal = {}
     },
     keys = {
         -- Top Pickers & Explorer
         { '<leader><space>', function() require("snacks").picker.smart() end, desc = 'Smart Find Files', },
-        { '<leader>,', function() require("snacks").picker.buffers() end, desc = 'Buffers', },
-        { '<leader>/', function() require("snacks").picker.grep() end, desc = 'Grep', },
-        -- find
         { '<leader>fb', function() require("snacks").picker.buffers() end, desc = '[F]ind [B]uffers', },
         { '<leader>ff', function() require("snacks").picker.files() end, desc = '[F]ind [F]iles', },
         { '<leader>fr', function() require("snacks").picker.recent() end, desc = '[F]ind [R]ecent', },
@@ -306,9 +304,8 @@ return {
         { '<leader>x', function() require("snacks").bufdelete() end, desc = 'Delete Buffer', },
         { '<leader>cR', function() require("snacks").rename.rename_file() end, desc = 'Rename File', },
         -- { '<leader>gB', function() require("snacks").gitbrowse() end, desc = 'Git Browse', mode = { 'n', 'v' }, },
-        { '<leader>gg', function() require("snacks").lazygit() end, desc = 'Lazygit', },
-        -- { '<leader>un', function() require("snacks").notifier.hide() end, desc = 'Dismiss All Notifications', },
-        { '<c-/>', function() require("snacks").terminal() end, desc = 'Toggle Terminal', },
+        { '<leader>lg', function() require("snacks").lazygit() end, desc = '[L]azy[G]it', },
+        { '<A-i>', function() require("snacks").terminal.toggle(vim.o.shell) end, desc = 'Toggle Terminal', mode = { 'n', 't' }, },
         { ']]', function() require("snacks").words.jump(vim.v.count1) end, desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[', function() require("snacks").words.jump(-vim.v.count1) end, desc = 'Prev Reference', mode = { 'n', 't' }, },
     },
