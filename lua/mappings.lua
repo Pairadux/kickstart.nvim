@@ -37,9 +37,9 @@ map('n', '<C-S-j>', '<C-w>j', { desc = 'Switch Window Down' })
 map('n', '<C-S-k>', '<C-w>k', { desc = 'Switch Window Up' })
 
 -- Tab Management
-map('n', '<leader><Tab>', '<Cmd>tabnew<CR>', { desc = 'Create New Tab' })
-map('n', '<leader>n', 'gt', { desc = 'Next Tab' })
-map('n', '<leader>p', 'gT', { desc = 'Previous Tab' })
+map('n', '<leader><Tab><Tab>', '<Cmd>tabnew<CR>', { desc = '[Tab] New [Tab]' })
+map('n', '<leader><Tab>n', 'gt', { desc = '[Tab] [N]ext' })
+map('n', '<leader><Tab>p', 'gT', { desc = '[Tab] [P]rev' })
 
 -- Clear Highlights
 map('n', '<Esc>', '<cmd>noh<CR>', { desc = 'General Clear Highlights' })
@@ -79,27 +79,6 @@ end, { desc = 'Move Buffer Right' })
 map('t', '<C-x>', '<C-\\><C-N>', { desc = 'Terminal Escape Terminal Mode' })
 
 -- NVCHAD SPECIFIC KEYBINDS {{{
--- Tabufline
--- map("n", "<tab>", function()
--- 	require("nvchad.tabufline").next()
--- end, { desc = "Buffer Goto Next" })
---
--- map("n", "<S-tab>", function()
--- 	require("nvchad.tabufline").prev()
--- end, { desc = "Buffer Goto Prev" })
---
--- map("n", "<leader>x", function()
--- 	require("nvchad.tabufline").close_buffer()
--- end, { desc = "Buffer Close" })
---
--- map("n", "<S-Right>", function()
--- 	require("nvchad.tabufline").move_buf(1)
--- end, { desc = "Move Buffer" })
---
--- map("n", "<S-Left>", function()
--- 	require("nvchad.tabufline").move_buf(-1)
--- end, { desc = "Move Buffer" })
-
 -- Toggleable
 -- map({ "n", "t" }, "<A-v>", function()
 -- 	require("nvchad.term").toggle({ pos = "vsp", id = "vtoggleTerm" })
@@ -124,12 +103,6 @@ map('t', '<C-x>', '<C-\\><C-N>', { desc = 'Terminal Escape Terminal Mode' })
 -- map({ "n", "t" }, "<A-0>", function()
 -- 	require("nvchad.term").toggle({ pos = "float", id = "3" })
 -- end, { desc = "Terminal Toggle Floating Term 3" })
---
--- -- Toggleable LazyGit Term
--- map({ "n", "t" }, "<A-l>", function()
--- 	require("nvchad.term").toggle({ pos = "float", id = "lazygit", cmd = "lazygit" })
--- end, { desc = "Terminal Toggle Lazygit" })
---
 -- -- Code Runner
 -- map("n", "<leader>rc", function()
 -- 	vim.schedule(function()
