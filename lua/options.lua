@@ -70,8 +70,7 @@ opt.smartindent = true -- Autoindent based on syntax
 opt.termguicolors = true -- Enable true colors for plugins like bufferline
 opt.cursorline = true -- Highlight current line
 opt.cursorlineopt = "both" -- Highlight line and number column
-opt.list = true -- Show whitespace characters
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.list = false -- Hide whitespace characters
 opt.fillchars = { eob = " " } -- End-of-buffer filler
 opt.inccommand = "split" -- Live preview for substitutions
 opt.wrap = false -- Disable line wrapping
