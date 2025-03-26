@@ -47,6 +47,7 @@ return {
 
             -- Document existing key chains
             spec = {
+                { '<leader><tab>', group = '[Tab]' },
                 { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
                 { '<leader>d', group = '[D]ocument' },
                 { '<leader>r', group = '[R]ename' },
@@ -57,6 +58,7 @@ return {
                 { '<leader>i', group = '[I]nsert' },
                 { '<leader>l', group = '[L]azy' },
                 { '<leader>m', group = '[M]ason' },
+                { '<leader>s', group = '[S]ession' },
             },
         },
     }, -- }}}
