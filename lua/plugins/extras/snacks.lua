@@ -4,7 +4,29 @@ return {
     lazy = false,
     opts = {
         bigfile = { enabled = false },
-        dashboard = { enabled = true },
+        dashboard = {
+            preset = {
+                keys = {
+                    { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
+                    { icon = ' ', key = 'g', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
+                    { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                    { icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+                    { icon = '󰟾 ', key = 'M', desc = 'Mason', action = ':Mason', enabled = package.loaded.lazy ~= nil },
+                    { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+                },
+                header = [[
+ ██████   ▄▄▄       ██▓ ██▀███   ▄▄▄      ▓█████▄  █    ██ ▒██   ██▒
+▓██░  ██▒▒████▄    ▓██▒▓██ ▒ ██▒▒████▄    ▒██▀ ██▌ ██  ▓██▒▒▒ █ █ ▒░
+▓██░ ██▓▒▒██  ▀█▄  ▒██▒▓██ ░▄█ ▒▒██  ▀█▄  ░██   █▌▓██  ▒██░░░  █   ░
+▒██▄█▓▒ ▒░██▄▄▄▄██ ░██░▒██▀▀█▄  ░██▄▄▄▄██ ░▓█▄   ▌▓▓█  ░██░ ░ █ █ ▒ 
+▒██▒ ░  ░ ▓█   ▓██▒░██░░██▓ ▒██▒ ▓█   ▓██▒░▒████▓ ▒▒█████▓ ▒██▒ ▒██▒
+▒▓▒░ ░  ░ ▒▒   ▓▒█░░▓  ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░ ▒▒▓  ▒ ░▒▓▒ ▒ ▒ ▒▒ ░ ░▓ ░
+░▒ ░       ▒   ▒▒ ░ ▒ ░  ░▒ ░ ▒░  ▒   ▒▒ ░ ░ ▒  ▒ ░░▒░ ░ ░ ░░   ░▒ ░
+░░         ░   ▒    ▒ ░  ░░   ░   ░   ▒    ░ ░  ░  ░░░ ░ ░  ░    ░  
+               ░  ░ ░     ░           ░  ░   ░       ░      ░    ░  
+                                           ░                        ]],
+            },
+        },
         explorer = { enabled = false },
         indent = { enabled = false },
         input = { enabled = false },
@@ -15,15 +37,45 @@ return {
         scroll = { enabled = false },
         statuscolumn = { enabled = false },
         words = { enabled = true },
-        terminal = {}
+        terminal = {},
     },
     keys = {
         -- Top Pickers & Explorer
-        { '<leader><space>', function() require("snacks").picker.smart() end, desc = 'Smart Find Files', },
-        { '<leader>fb', function() require("snacks").picker.buffers() end, desc = '[F]ind [B]uffers', },
-        { '<leader>ff', function() require("snacks").picker.files() end, desc = '[F]ind [F]iles', },
-        { '<leader>fr', function() require("snacks").picker.recent() end, desc = '[F]ind [R]ecent', },
-        { '<leader>fg', function() require("snacks").picker.grep() end, desc = '[F]ind [G]rep', },
+        {
+            '<leader><space>',
+            function()
+                require('snacks').picker.smart()
+            end,
+            desc = 'Smart Find Files',
+        },
+        {
+            '<leader>fb',
+            function()
+                require('snacks').picker.buffers()
+            end,
+            desc = '[F]ind [B]uffers',
+        },
+        {
+            '<leader>ff',
+            function()
+                require('snacks').picker.files()
+            end,
+            desc = '[F]ind [F]iles',
+        },
+        {
+            '<leader>fr',
+            function()
+                require('snacks').picker.recent()
+            end,
+            desc = '[F]ind [R]ecent',
+        },
+        {
+            '<leader>fg',
+            function()
+                require('snacks').picker.grep()
+            end,
+            desc = '[F]ind [G]rep',
+        },
         -- -- git{{{
         -- {
         --     '<leader>gb',
@@ -299,14 +351,65 @@ return {
         -- -- Other
         -- { '<leader>z', function() require("snacks").zen() end, desc = 'Toggle Zen Mode', },
         -- { '<leader>Z', function() require("snacks").zen.zoom() end, desc = 'Toggle Zoom', },
-        { '<leader>.', function() require("snacks").scratch() end, desc = 'Toggle Scratch Buffer', },
-        { '<leader>S', function() require("snacks").scratch.select() end, desc = 'Select Scratch Buffer', },
-        { '<leader>x', function() require("snacks").bufdelete() end, desc = 'Delete Buffer', },
-        { '<leader>cR', function() require("snacks").rename.rename_file() end, desc = 'Rename File', },
+        {
+            '<leader>.',
+            function()
+                require('snacks').scratch()
+            end,
+            desc = 'Toggle Scratch Buffer',
+        },
+        {
+            '<leader>S',
+            function()
+                require('snacks').scratch.select()
+            end,
+            desc = 'Select Scratch Buffer',
+        },
+        {
+            '<leader>x',
+            function()
+                require('snacks').bufdelete()
+            end,
+            desc = 'Delete Buffer',
+        },
+        {
+            '<leader>cR',
+            function()
+                require('snacks').rename.rename_file()
+            end,
+            desc = 'Rename File',
+        },
         -- { '<leader>gB', function() require("snacks").gitbrowse() end, desc = 'Git Browse', mode = { 'n', 'v' }, },
-        { '<leader>lg', function() require("snacks").lazygit() end, desc = '[L]azy[G]it', },
-        { '<A-i>', function() require("snacks").terminal.toggle(vim.o.shell) end, desc = 'Toggle Terminal', mode = { 'n', 't' }, },
-        { ']]', function() require("snacks").words.jump(vim.v.count1) end, desc = 'Next Reference', mode = { 'n', 't' }, },
-        { '[[', function() require("snacks").words.jump(-vim.v.count1) end, desc = 'Prev Reference', mode = { 'n', 't' }, },
+        {
+            '<leader>lg',
+            function()
+                require('snacks').lazygit()
+            end,
+            desc = '[L]azy[G]it',
+        },
+        {
+            '<A-i>',
+            function()
+                require('snacks').terminal.toggle(vim.o.shell)
+            end,
+            desc = 'Toggle Terminal',
+            mode = { 'n', 't' },
+        },
+        {
+            ']]',
+            function()
+                require('snacks').words.jump(vim.v.count1)
+            end,
+            desc = 'Next Reference',
+            mode = { 'n', 't' },
+        },
+        {
+            '[[',
+            function()
+                require('snacks').words.jump(-vim.v.count1)
+            end,
+            desc = 'Prev Reference',
+            mode = { 'n', 't' },
+        },
     },
 }
