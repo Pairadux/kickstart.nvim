@@ -13,7 +13,8 @@ return {
             {
                 '<leader>sl',
                 function()
-                    require('resession').load()
+                    local cwd = vim.fn.getcwd()
+                    require('resession').load(cwd, { dir = 'dirsession', notify = true })
                 end,
                 desc = '[S]ession [L]oad',
             },
