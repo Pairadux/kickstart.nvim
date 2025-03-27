@@ -31,10 +31,12 @@ return {
                     buffer_close_icon = '',
                     close_icon = '',
                     offsets = {
-                        filetype = 'neo-tree',
-                        text = 'File Explorer',
-                        text_align = 'center',
-                        seperator = true,
+                        {
+                            filetype = 'neo-tree',
+                            text = 'NeoTree',
+                            text_align = 'center',
+                            separator = true,
+                        },
                     },
                 },
             }
