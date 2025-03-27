@@ -15,9 +15,29 @@ return {
         opts = {
             library = {
                 -- Load luvit types when the `vim.uv` word is found
+                { path = 'luvit-meta/library', words = { 'vim%.uv' } },
                 { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+                { path = 'lazy.nvim', words = { 'LazyVim' } },
+                'nvim-dap-ui',
             },
         },
+    },
+
+    { 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
+
+    {
+        'ray-x/go.nvim',
+        dependencies = {
+            'ray-x/guihua.lua',
+            'neovim/nvim-lspconfig',
+            'nvim-treesitter/nvim-treesitter',
+        },
+        config = function()
+            require('go').setup()
+        end,
+        event = { 'CmdlineEnter' },
+        ft = { 'go', 'gomod' },
+        build = ':lua require("go.install").update_all_sync()',
     },
 
     -- nvim-cmd {{{
@@ -137,5 +157,5 @@ return {
                 },
             }
         end,
-    },-- }}}
+    }, -- }}}
 }

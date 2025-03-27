@@ -8,12 +8,80 @@
 
 return {
 
+    {
+        'folke/todo-comments.nvim',
+        event = 'VimEnter',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = { signs = false },
+    },
+
+    {
+        'kylechui/nvim-surround',
+        version = '*', -- Use for stability; omit to use `main` branch for the latest features
+        event = 'VeryLazy',
+        opts = {},
+    },
+
+    {
+        'nvim-neo-tree/neo-tree.nvim',
+        version = '*',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+            'MunifTanjim/nui.nvim',
+        },
+        cmd = 'Neotree',
+        keys = {
+            { '<C-n>', '<cmd>Neotree toggle<CR>', desc = 'NeoTree Toggle', silent = true },
+        },
+        opts = {
+            filesystem = {
+                window = {
+                    mappings = {
+                        ['<C-n>'] = 'close_window',
+                    },
+                },
+            },
+        },
+    },
+
+    {
+        'windwp/nvim-autopairs',
+        event = 'InsertEnter',
+        -- Optional dependency
+        dependencies = { 'hrsh7th/nvim-cmp' },
+        config = function()
+            require('nvim-autopairs').setup {}
+            -- If you want to automatically add `(` after selecting a function or method
+            local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+            local cmp = require 'cmp'
+            cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+        end,
+    },
+
+    {
+        'christoomey/vim-tmux-navigator',
+        keys = {
+            { '<C-h>', '<cmd>TmuxNavigateLeft<CR>', desc = 'Tmux Window Left' },
+            { '<C-l>', '<cmd>TmuxNavigateRight<CR>', desc = 'Tmux Window Right' },
+            { '<C-A-j>', '<cmd>TmuxNavigateDown<CR>', desc = 'Tmux Window Down' },
+            { '<C-A-k>', '<cmd>TmuxNavigateUp<CR>', desc = 'Tmux Window Up' },
+        },
+        cmd = {
+            'TmuxNavigateLeft',
+            'TmuxNavigateDown',
+            'TmuxNavigateUp',
+            'TmuxNavigateRight',
+            'TmuxNavigatePrevious',
+        },
+    },
+
     -- WhichKey {{{
     {
         'folke/which-key.nvim',
         event = 'VimEnter', -- Sets the loading event to 'VimEnter'
         opts = {
-            preset = "helix",
+            preset = 'helix',
             -- delay between pressing a key and opening which-key (milliseconds)
             -- this setting is independent of vim.opt.timeoutlen
             delay = 0,
@@ -72,48 +140,64 @@ return {
         },
     }, -- }}}
 
-    -- Highlight todo, notes, etc in comments
+    -- Flash {{{
     {
-        'folke/todo-comments.nvim',
-        event = 'VimEnter',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        opts = { signs = false },
-    },
-
-    {
-        'nvim-neo-tree/neo-tree.nvim',
-        version = '*',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-            'MunifTanjim/nui.nvim',
-        },
-        cmd = 'Neotree',
-        keys = {
-            { '<C-n>', '<cmd>Neotree toggle<CR>', desc = 'NeoTree Toggle', silent = true },
-        },
+        'folke/flash.nvim',
+        event = 'VeryLazy',
         opts = {
-            filesystem = {
-                window = {
-                    mappings = {
-                        ['<C-n>'] = 'close_window',
-                    },
-                },
+            char = {
+                char_actions = function()
+                    return {
+                        [';'] = 'next', -- set to `right` to always go right
+                        [','] = 'prev', -- set to `left` to always go left
+                        -- -- clever-f style
+                        -- [motion:lower()] = "next",
+                        -- [motion:upper()] = "prev",
+                    }
+                end,
             },
         },
-    },
-
-    {
-        'windwp/nvim-autopairs',
-        event = 'InsertEnter',
-        -- Optional dependency
-        dependencies = { 'hrsh7th/nvim-cmp' },
-        config = function()
-            require('nvim-autopairs').setup {}
-            -- If you want to automatically add `(` after selecting a function or method
-            local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-            local cmp = require 'cmp'
-            cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-        end,
-    },
+        keys = {
+            {
+                's',
+                function()
+                    require('flash').jump()
+                end,
+                mode = { 'n', 'x', 'o' },
+                desc = 'Flash',
+            },
+            {
+                'S',
+                function()
+                    require('flash').treesitter()
+                end,
+                mode = { 'n', 'x', 'o' },
+                desc = 'Flash Treesitter',
+            },
+            {
+                'r',
+                function()
+                    require('flash').remote()
+                end,
+                mode = 'o',
+                desc = 'Remote Flash',
+            },
+            {
+                'R',
+                function()
+                    require('flash').treesitter_search()
+                end,
+                mode = { 'o', 'x' },
+                desc = 'Treesitter Search',
+            },
+            {
+                '<c-s>',
+                function()
+                    require('flash').toggle()
+                end,
+                mode = { 'c' },
+                desc = 'Toggle Flash Search',
+            },
+        },
+    }, -- }}}
 }

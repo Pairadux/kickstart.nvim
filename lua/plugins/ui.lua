@@ -7,6 +7,68 @@
 
 return {
 
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        opts = {
+            options = {
+                theme = 'tokyonight',
+            },
+        },
+    },
+
+    {
+        'akinsho/bufferline.nvim',
+        version = '*',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        config = function()
+            require('bufferline').setup {
+                options = {
+                    buffer_close_icon = '',
+                    close_icon = '',
+                    offsets = {
+                        filetype = 'neo-tree',
+                        text = 'File Explorer',
+                        text_align = 'center',
+                        seperator = true,
+                    },
+                },
+            }
+        end,
+    },
+
+    { -- Add indentation guides even on blank lines
+        'lukas-reineke/indent-blankline.nvim',
+        -- Enable `lukas-reineke/indent-blankline.nvim`
+        -- See `:help ibl`
+        main = 'ibl',
+        opts = {},
+    },
+
+    {
+        'karb94/neoscroll.nvim',
+        enabled = function()
+            return not vim.g.neovide
+        end,
+        event = 'VeryLazy',
+        opts = {
+            mappings = {
+                '<C-d>',
+                '<C-u>',
+                '<C-b>',
+                '<C-f>',
+                '<C-y>',
+                '<C-e>',
+                'zz',
+            },
+            hide_cursor = false,
+        },
+    },
+
     -- Gitsigns {{{
     {
         'lewis6991/gitsigns.nvim',
@@ -71,48 +133,6 @@ return {
             end,
         },
     }, -- }}}
-
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-        },
-        opts = {
-            options = {
-                theme = 'tokyonight',
-            },
-        },
-    },
-
-    {
-        'akinsho/bufferline.nvim',
-        version = '*',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-        },
-        config = function()
-            require('bufferline').setup {
-                options = {
-                    buffer_close_icon = '',
-                    close_icon = '',
-                    offsets = {
-                        filetype = 'neo-tree',
-                        text = 'File Explorer',
-                        text_align = 'center',
-                        seperator = true,
-                    },
-                },
-            }
-        end,
-    },
-
-    { -- Add indentation guides even on blank lines
-        'lukas-reineke/indent-blankline.nvim',
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help ibl`
-        main = 'ibl',
-        opts = {},
-    },
 
     -- Noice {{{
     {
