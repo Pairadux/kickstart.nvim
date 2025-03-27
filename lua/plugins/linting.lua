@@ -1,3 +1,10 @@
+--[[
+  linting.lua
+  ---------------
+  This file is for plugins that provide linting and static analysis.
+  Add any plugins that check for errors, enforce coding standards, or analyze code quality.
+]]
+
 return {
     --     { -- Linting
     --         'mfussenegger/nvim-lint',

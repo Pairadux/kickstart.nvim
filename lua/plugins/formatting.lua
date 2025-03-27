@@ -1,3 +1,10 @@
+--[[
+  formatting.lua
+  ------------------
+  This file is for plugins that handle code formatting.
+  Include tools that automatically format your code or integrate with external formatters.
+]]
+
 return {
     { -- Autoformat
         'stevearc/conform.nvim',

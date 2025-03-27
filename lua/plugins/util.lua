@@ -1,3 +1,10 @@
+--[[
+  util.lua
+  ---------
+  This file is for utility plugins that provide helper functions or extra commands.
+  Include any plugins that offer additional features or integrations which don't belong to a specific category.
+]]
+
 return {
     {
         'stevearc/resession.nvim',

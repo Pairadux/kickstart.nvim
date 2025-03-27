@@ -1,3 +1,10 @@
+--[[
+  extras/debug.lua
+  ------------------
+  This file is for plugins that enhance debugging capabilities.
+  Include plugins for breakpoints, code inspection, and other debugging tools.
+]]
+
 -- -- debug.lua
 -- --
 -- -- Shows how to use the DAP plugin to debug your code.

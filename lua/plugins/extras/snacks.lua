@@ -1,3 +1,9 @@
+--[[
+  extras/snacks.lua
+  ------------------
+  This file is for snacks.nvim
+]]
+
 return {
     'folke/snacks.nvim',
     priority = 1000,

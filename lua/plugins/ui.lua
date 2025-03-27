@@ -1,3 +1,10 @@
+--[[
+  ui.lua
+  -------
+  This file is for plugins that affect the user interface.
+  Include plugins that enhance visual components, layout adjustments, and overall UI improvements.
+]]
+
 return {
 
     -- Gitsigns {{{

@@ -1,3 +1,10 @@
+--[[
+  treesitter.lua
+  ------------------
+  This file is for plugins that integrate with Tree-sitter.
+  Add plugins for advanced syntax highlighting, parsing, and structural code analysis.
+]]
+
 return {
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
