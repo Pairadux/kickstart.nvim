@@ -43,46 +43,30 @@ return {
         scroll = { enabled = false },
         statuscolumn = { enabled = false },
         words = { enabled = true },
-        terminal = {},
+        terminal = { enabled = true },
     },
     keys = {
+        -- stylua: ignore start
         -- Top Pickers & Explorer
-        {
-            '<leader><space>',
-            function()
-                require('snacks').picker.smart()
-            end,
-            desc = 'Smart Find Files',
-        },
-        {
-            '<leader>fb',
-            function()
-                require('snacks').picker.buffers()
-            end,
-            desc = '[F]ind [B]uffers',
-        },
-        {
-            '<leader>ff',
-            function()
-                require('snacks').picker.files()
-            end,
-            desc = '[F]ind [F]iles',
-        },
-        {
-            '<leader>fr',
-            function()
-                require('snacks').picker.recent()
-            end,
-            desc = '[F]ind [R]ecent',
-        },
-        {
-            '<leader>fg',
-            function()
-                require('snacks').picker.grep()
-            end,
-            desc = '[F]ind [G]rep',
-        },
-        -- -- git{{{
+        { '<leader><space>', function() require('snacks').picker.smart() end, desc = 'Smart Find Files', },
+        { '<leader>fb', function() require('snacks').picker.buffers() end, desc = '[F]ind [B]uffers', },
+        { '<leader>ff', function() require('snacks').picker.files() end, desc = '[F]ind [F]iles', },
+        { '<leader>fr', function() require('snacks').picker.recent() end, desc = '[F]ind [R]ecent', },
+        { '<leader>fg', function() require('snacks').picker.grep() end, desc = '[F]ind [G]rep', },
+        -- Other
+        { '<leader>.', function() require('snacks').scratch() end, desc = 'Toggle Scratch Buffer', },
+        { '<leader>S', function() require('snacks').scratch.select() end, desc = 'Select Scratch Buffer', },
+        { '<leader>x', function() require('snacks').bufdelete() end, desc = 'Buffer Close', },
+        { '<leader>cR', function() require('snacks').rename.rename_file() end, desc = 'Rename File', },
+        { '<leader>lg', function() require('snacks').lazygit() end, desc = '[L]azy[G]it', },
+        { '<A-i>', function() require('snacks').terminal.toggle(vim.o.shell) end, desc = 'Toggle Terminal', mode = { 'n', 't' }, },
+        { ']]', function() require('snacks').words.jump(vim.v.count1) end, desc = 'Next Reference', mode = { 'n', 't' }, },
+        { '[[', function() require('snacks').words.jump(-vim.v.count1) end, desc = 'Prev Reference', mode = { 'n', 't' }, },
+        -- { '<leader>z', function() require("snacks").zen() end, desc = 'Toggle Zen Mode', },
+        -- { '<leader>Z', function() require("snacks").zen.zoom() end, desc = 'Toggle Zoom', },
+        -- stylua: ignore end
+        -- Git {{{
+        -- TODO: add some of these to a nested "git" section
         -- {
         --     '<leader>gb',
         --     function()
@@ -90,6 +74,7 @@ return {
         --     end,
         --     desc = 'Git Branches',
         -- },
+        -- { '<leader>gB', function() require("snacks").gitbrowse() end, desc = 'Git Browse', mode = { 'n', 'v' }, },
         -- {
         --     '<leader>gl',
         --     function()
@@ -132,7 +117,7 @@ return {
         --     end,
         --     desc = 'Git Log File',
         -- },}}}
-        -- -- Grep{{{
+        -- Grep {{{
         -- {
         --     '<leader>sb',
         --     function()
@@ -155,7 +140,8 @@ return {
         --     desc = 'Visual selection or word',
         --     mode = { 'n', 'x' },
         -- },}}}
-        -- -- search{{{
+        -- Search {{{
+        -- TODO: add some of these to a nested "other/extra" section
         -- {
         --     '<leader>s"',
         --     function()
@@ -354,68 +340,5 @@ return {
         --     end,
         --     desc = 'LSP Workspace Symbols',
         -- },}}}
-        -- -- Other
-        -- { '<leader>z', function() require("snacks").zen() end, desc = 'Toggle Zen Mode', },
-        -- { '<leader>Z', function() require("snacks").zen.zoom() end, desc = 'Toggle Zoom', },
-        {
-            '<leader>.',
-            function()
-                require('snacks').scratch()
-            end,
-            desc = 'Toggle Scratch Buffer',
-        },
-        {
-            '<leader>S',
-            function()
-                require('snacks').scratch.select()
-            end,
-            desc = 'Select Scratch Buffer',
-        },
-        {
-            '<leader>x',
-            function()
-                require('snacks').bufdelete()
-            end,
-            desc = 'Buffer Close',
-        },
-        {
-            '<leader>cR',
-            function()
-                require('snacks').rename.rename_file()
-            end,
-            desc = 'Rename File',
-        },
-        -- { '<leader>gB', function() require("snacks").gitbrowse() end, desc = 'Git Browse', mode = { 'n', 'v' }, },
-        {
-            '<leader>lg',
-            function()
-                require('snacks').lazygit()
-            end,
-            desc = '[L]azy[G]it',
-        },
-        {
-            '<A-i>',
-            function()
-                require('snacks').terminal.toggle(vim.o.shell)
-            end,
-            desc = 'Toggle Terminal',
-            mode = { 'n', 't' },
-        },
-        {
-            ']]',
-            function()
-                require('snacks').words.jump(vim.v.count1)
-            end,
-            desc = 'Next Reference',
-            mode = { 'n', 't' },
-        },
-        {
-            '[[',
-            function()
-                require('snacks').words.jump(-vim.v.count1)
-            end,
-            desc = 'Prev Reference',
-            mode = { 'n', 't' },
-        },
     },
 }
