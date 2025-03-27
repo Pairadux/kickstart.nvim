@@ -8,7 +8,7 @@ local map = vim.keymap.set
 map('i', 'jk', '<ESC>')
 
 -- Adjusted default zt behavior
-map({ 'n', 'v' }, 'zt', 'zt2<C-y>', { noremap = true, silent = true })
+-- map({ 'n', 'v' }, 'zt', 'zt2<C-y>', { noremap = true, silent = true })
 
 -- Adjusted default C-d & C-u behavior
 -- map("n", "<C-d>", "Lzz", { noremap = true, silent = true })
