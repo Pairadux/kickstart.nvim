@@ -24,6 +24,7 @@ opt.ruler = false -- Disable the ruler
 opt.mouse = "a" -- Enable mouse support
 opt.showmode = false -- Don't show mode (already in status line)
 opt.laststatus = 3 -- Use global statusline
+opt.scrolloff = 5 -- Minimal lines of context
 
 -----------------------------------------------------------
 -- Clipboard
@@ -38,7 +39,6 @@ end)
 -----------------------------------------------------------
 opt.updatetime = 250 -- Faster completion, update time in ms
 opt.timeoutlen = 400 -- Mapped sequence wait time (ms)
-opt.scrolloff = 10 -- Minimal lines of context
 
 -----------------------------------------------------------
 -- Window Splitting
