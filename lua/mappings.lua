@@ -15,8 +15,8 @@ map({ 'n', 'v' }, 'zt', 'zt2<C-y>', { noremap = true, silent = true })
 -- map("n", "<C-u>", "Hzz", { noremap = true, silent = true })
 
 -- Quicker navigation
-map({ 'n', 'v' }, '<C-j>', '5j', { noremap = true, silent = true })
-map({ 'n', 'v' }, '<C-k>', '5k', { noremap = true, silent = true })
+-- map({ 'n', 'v' }, '<C-j>', '5j', { noremap = true, silent = true })
+-- map({ 'n', 'v' }, '<C-k>', '5k', { noremap = true, silent = true })
 
 -- close nvim with q, different action based on buffer type
 map('n', '<C-q>', 'ZZ', { noremap = true, silent = true })
@@ -33,8 +33,8 @@ map('i', '<C-k>', '<Up>', { desc = 'Move Up' })
 -- Window Movement
 map('n', '<C-h>', '<C-w>h', { desc = 'Switch Window Left' })
 map('n', '<C-l>', '<C-w>l', { desc = 'Switch Window Right' })
-map('n', '<C-S-j>', '<C-w>j', { desc = 'Switch Window Down' })
-map('n', '<C-S-k>', '<C-w>k', { desc = 'Switch Window Up' })
+map('n', '<C-j>', '<C-w>j', { desc = 'Switch Window Down' })
+map('n', '<C-k>', '<C-w>k', { desc = 'Switch Window Up' })
 
 -- Tab Management
 map('n', '<leader><Tab><Tab>', '<Cmd>tabnew<CR>', { desc = '[Tab] New [Tab]' })
