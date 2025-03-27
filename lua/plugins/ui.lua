@@ -50,6 +50,14 @@ return {
         main = 'ibl',
         opts = {},
     },
+        keys = {
+            -- stylua: ignore start
+            { '<S-tab>', '<cmd>BufferLineCyclePrev<CR>', desc = 'Buffer Goto Prev' },
+            { '<tab>', '<cmd>BufferLineCycleNext<CR>', desc = 'Buffer Goto Next' },
+            { '<S-Left>', function() require('bufferline').move(-1) end , desc = 'Move Buffer Left' },
+            { '<S-Right>', function() require('bufferline').move(1) end , desc = 'Move Buffer Right' },
+            -- stylua: ignore end
+        },
 
     {
         'karb94/neoscroll.nvim',

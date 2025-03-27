@@ -61,48 +61,14 @@ map('n', '<leader>ib', '80i#<ESC>', { noremap = true, silent = true, desc = "[I]
 -- Insert Config Section Title Box
 map('n', '<leader>it', 'O# *-*<CR># | |<CR># *-*<ESC>', { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
 
+-- Terminal
+map('t', '<C-x>', '<C-\\><C-N>', { desc = 'Terminal Escape Terminal Mode' })
+
 ------------------------------------------------------------
 -- PLUGIN
 ------------------------------------------------------------
 
--- Bufferline
-map('n', '<tab>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Buffer Goto Next' })
-map('n', '<S-tab>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Buffer Goto Prev' })
-map('n', '<S-Left>', function()
-    require('bufferline').move(-1)
-end, { desc = 'Move Buffer Left' })
-map('n', '<S-Right>', function()
-    require('bufferline').move(1)
-end, { desc = 'Move Buffer Right' })
-
--- Terminal
-map('t', '<C-x>', '<C-\\><C-N>', { desc = 'Terminal Escape Terminal Mode' })
-
--- NVCHAD SPECIFIC KEYBINDS {{{
--- Toggleable
--- map({ "n", "t" }, "<A-v>", function()
--- 	require("nvchad.term").toggle({ pos = "vsp", id = "vtoggleTerm" })
--- end, { desc = "Terminal Toggleable Vertical Term" })
---
--- map({ "n", "t" }, "<A-h>", function()
--- 	require("nvchad.term").toggle({ pos = "sp", id = "htoggleTerm" })
--- end, { desc = "Terminal Toggleable Horizontal Term" })
---
--- map({ "n", "t" }, "<A-i>", function()
--- 	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
--- end, { desc = "Terminal Toggle Floating Term" })
---
--- map({ "n", "t" }, "<A-8>", function()
--- 	require("nvchad.term").toggle({ pos = "float", id = "1" })
--- end, { desc = "Terminal Toggle Floating Term 1" })
---
--- map({ "n", "t" }, "<A-9>", function()
--- 	require("nvchad.term").toggle({ pos = "float", id = "2" })
--- end, { desc = "Terminal Toggle Floating Term 2" })
---
--- map({ "n", "t" }, "<A-0>", function()
--- 	require("nvchad.term").toggle({ pos = "float", id = "3" })
--- end, { desc = "Terminal Toggle Floating Term 3" })
+-- NvChad Code Runner {{{
 -- -- Code Runner
 -- map("n", "<leader>rc", function()
 -- 	vim.schedule(function()
