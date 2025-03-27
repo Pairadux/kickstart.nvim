@@ -370,7 +370,7 @@ return {
             function()
                 require('snacks').bufdelete()
             end,
-            desc = 'Delete Buffer',
+            desc = 'Buffer Close',
         },
         {
             '<leader>cR',
