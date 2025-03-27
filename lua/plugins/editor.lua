@@ -8,20 +8,23 @@
 
 return {
 
+    -- Todo Comments {{{
     {
         'folke/todo-comments.nvim',
         event = 'VimEnter',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = { signs = false },
-    },
+    },-- }}}
 
+    -- Nvim Surround {{{
     {
         'kylechui/nvim-surround',
         version = '*', -- Use for stability; omit to use `main` branch for the latest features
         event = 'VeryLazy',
         opts = {},
-    },
+    },-- }}}
 
+    -- Neo Tree {{{
     {
         'nvim-neo-tree/neo-tree.nvim',
         version = '*',
@@ -46,8 +49,9 @@ return {
                 },
             },
         },
-    },
+    },-- }}}
 
+    -- Nvim Autopairs {{{
     {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
@@ -60,8 +64,9 @@ return {
             local cmp = require 'cmp'
             cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
         end,
-    },
+    },-- }}}
 
+    -- Vim Tmux Navigator {{{
     {
         'christoomey/vim-tmux-navigator',
         keys = {
@@ -77,7 +82,7 @@ return {
             'TmuxNavigateRight',
             'TmuxNavigatePrevious',
         },
-    },
+    },-- }}}
 
     -- WhichKey {{{
     {

@@ -6,6 +6,8 @@
 ]]
 
 return {
+
+    -- Resession{{{
     {
         'stevearc/resession.nvim',
         keys = {
@@ -41,8 +43,9 @@ return {
             },
         },
         opts = { extensions = {} },
-    },
+    },-- }}}
 
+    -- Auto Save {{{
     {
         'okuuva/auto-save.nvim',
         cmd = 'ASToggle', -- optional for lazy loading on command
@@ -56,5 +59,6 @@ return {
                 cancel_defer_save = {},
             },
         },
-    },
+    },-- }}}
+
 }

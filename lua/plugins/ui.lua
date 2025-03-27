@@ -7,6 +7,16 @@
 
 return {
 
+    -- Indent Blankline {{{
+    { -- Add indentation guides even on blank lines
+        'lukas-reineke/indent-blankline.nvim',
+        -- Enable `lukas-reineke/indent-blankline.nvim`
+        -- See `:help ibl`
+        main = 'ibl',
+        opts = {},
+    },-- }}}
+
+    -- Lualine {{{
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
@@ -17,11 +27,13 @@ return {
                 theme = 'tokyonight',
             },
         },
-    },
+    },-- }}}
 
+    -- Bufferline {{{
     {
         'akinsho/bufferline.nvim',
         version = '*',
+        event = 'VimEnter',
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         },
@@ -41,15 +53,6 @@ return {
                 },
             }
         end,
-    },
-
-    { -- Add indentation guides even on blank lines
-        'lukas-reineke/indent-blankline.nvim',
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help ibl`
-        main = 'ibl',
-        opts = {},
-    },
         keys = {
             -- stylua: ignore start
             { '<S-tab>', '<cmd>BufferLineCyclePrev<CR>', desc = 'Buffer Goto Prev' },
@@ -58,7 +61,9 @@ return {
             { '<S-Right>', function() require('bufferline').move(1) end , desc = 'Move Buffer Right' },
             -- stylua: ignore end
         },
+    },-- }}}
 
+    -- Neoscroll {{{
     {
         'karb94/neoscroll.nvim',
         enabled = function()
@@ -77,7 +82,7 @@ return {
             },
             hide_cursor = false,
         },
-    },
+    },-- }}}
 
     -- Gitsigns {{{
     {
