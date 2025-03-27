@@ -35,6 +35,9 @@ return {
             { '<C-n>', '<cmd>Neotree toggle<CR>', desc = 'NeoTree Toggle', silent = true },
         },
         opts = {
+            window = {
+                width = 30,
+            },
             filesystem = {
                 window = {
                     mappings = {
@@ -145,59 +148,26 @@ return {
         'folke/flash.nvim',
         event = 'VeryLazy',
         opts = {
-            char = {
-                char_actions = function()
-                    return {
-                        [';'] = 'next', -- set to `right` to always go right
-                        [','] = 'prev', -- set to `left` to always go left
-                        -- -- clever-f style
-                        -- [motion:lower()] = "next",
-                        -- [motion:upper()] = "prev",
-                    }
-                end,
+            modes = {
+                char = {
+                    multi_line = false,
+                    char_actions = function()
+                        return {
+                            [';'] = 'next', -- set to `right` to always go right
+                            [','] = 'prev', -- set to `left` to always go left
+                        }
+                    end,
+                    highlight = { backdrop = false },
+                },
             },
         },
         keys = {
-            {
-                's',
-                function()
-                    require('flash').jump()
-                end,
-                mode = { 'n', 'x', 'o' },
-                desc = 'Flash',
-            },
-            {
-                'S',
-                function()
-                    require('flash').treesitter()
-                end,
-                mode = { 'n', 'x', 'o' },
-                desc = 'Flash Treesitter',
-            },
-            {
-                'r',
-                function()
-                    require('flash').remote()
-                end,
-                mode = 'o',
-                desc = 'Remote Flash',
-            },
-            {
-                'R',
-                function()
-                    require('flash').treesitter_search()
-                end,
-                mode = { 'o', 'x' },
-                desc = 'Treesitter Search',
-            },
-            {
-                '<c-s>',
-                function()
-                    require('flash').toggle()
-                end,
-                mode = { 'c' },
-                desc = 'Toggle Flash Search',
-            },
+            -- stylua: ignore start
+            { 's', function() require('flash').jump() end, mode = { 'n' }, desc = 'Flash', },
+            { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter', },
+            { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash', },
+            { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search', },
+            -- stylua: ignore end
         },
     }, -- }}}
 }
