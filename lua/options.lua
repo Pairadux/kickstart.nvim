@@ -61,6 +61,7 @@ opt.undofile = true -- Enable persistent undo
 -- Indentation
 -----------------------------------------------------------
 opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.tabstop = 4 -- Tab Stop
 opt.shiftwidth = 4 -- Indent width
 opt.smartindent = true -- Autoindent based on syntax
 
