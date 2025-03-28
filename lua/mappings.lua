@@ -95,6 +95,7 @@ map('t', '<C-x>', '<C-\\><C-N>', { desc = 'Terminal Escape Terminal Mode' })
 -- end, { desc = "[R]un [C]urrent File", noremap = true, silent = true })}}}
 
 -- Lazy Update
+map('n', '<leader>lo', '<cmd>Lazy<CR>', { desc = '[L]azy [U]pdate', noremap = true, silent = true })
 map('n', '<leader>lu', '<cmd>Lazy update<CR>', { desc = '[L]azy [U]pdate', noremap = true, silent = true })
 
 -- Mason Open
