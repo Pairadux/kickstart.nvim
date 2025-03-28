@@ -92,6 +92,10 @@ return {
         event = 'VimEnter', -- Sets the loading event to 'VimEnter'
         opts = {
             preset = 'helix',
+            keys = {
+                scroll_down = '<c-s-d>',
+                scroll_up = '<c-s-u>',
+            },
             -- delay between pressing a key and opening which-key (milliseconds)
             -- this setting is independent of vim.opt.timeoutlen
             delay = 0,
@@ -155,6 +159,9 @@ return {
         'folke/flash.nvim',
         event = 'VeryLazy',
         opts = {
+            highlight = {
+                backdrop = false,
+            },
             modes = {
                 char = {
                     multi_line = false,
@@ -172,8 +179,9 @@ return {
             -- stylua: ignore start
             { 's', function() require('flash').jump() end, mode = { 'n' }, desc = 'Flash', },
             { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter', },
-            { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash', },
-            { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search', },
+            -- NOTE: I cannot figure out what these 2 do, so I am just not using them
+            -- { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash', },
+            -- { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search', },
             -- stylua: ignore end
         },
     }, -- }}}
