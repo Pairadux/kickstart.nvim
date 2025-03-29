@@ -76,6 +76,7 @@ opt.fillchars = { eob = " " } -- End-of-buffer filler
 opt.inccommand = "split" -- Live preview for substitutions
 opt.wrap = false -- Disable line wrapping
 opt.whichwrap:append("<>[]hl") -- Allow cursor wrapping with these keys
+opt.spell = false
 
 -----------------------------------------------------------
 -- Session & Folding Options (Global Options)

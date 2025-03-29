@@ -32,6 +32,13 @@ autocmd('VimEnter', {
     end,
 })
 
+autocmd('FileType', {
+    pattern = { 'markdown', 'text' },
+    callback = function()
+        vim.opt_local.spell = true
+    end,
+})
+
 -- user event that loads after UIEnter + only if file buf is there
 autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
     group = vim.api.nvim_create_augroup('NvFilePost', { clear = true }),
